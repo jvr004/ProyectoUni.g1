@@ -76,7 +76,78 @@ public class AlumnoData {
     }
     
     
+    public Alumno obtenerAlumnoPorId(int id) {
+        String sql= "SELECT * FROM alumnos WHERE idAlumno = ?";
+        Alumno alu = new Alumno();
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next()){              
+                alu.setIdAlumno(id);
+                alu.setDni(rs.getInt("dni"));
+                alu.setApellido(rs.getString("apellido"));
+                alu.setNombre(rs.getString("nombre"));
+                alu.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alu.setEstado(rs.getBoolean("estado"));
+                
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ALumnoData Sentencia SQL erronea-obtenerAlumnoPorId");
+        }
+        return alu;
+         
+    }
+    
+    
+    public void borrarAlumno (int id){
+        String sql="UPDATE alumnos SET estado=0 WHERE idAlumno=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            ps.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Se elimino el alumno correctamente");
+            
+            ps.close();
+            
+    }   catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ALumnoData Sentencia SQL erronea-borrarAlumno");
+        }
+    }
+    
+    
+    
+    public void actualizaAlumno(Alumno alumno){
+        String sql="UPDATE alumnos SET dni=?, apellido = ?, nombre = ?, fechaNacimiento = ?, estado=0 WHERE idAlumno=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setBoolean(5, alumno.isEstado());
+            ps.setInt(6, alumno.getIdAlumno());
+            ps.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Datos del alumno actualizados");
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ALumnoData Sentencia SQL erronea-actualizarAlumno");
+        }
+    }
 }
+    
+    
+    
+
     
     
     

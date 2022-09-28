@@ -16,21 +16,19 @@ public class TestProyect {
         
         AlumnoData ad =new AlumnoData();
             
-<<<<<<< Updated upstream
+
         Alumno alu = new Alumno(3323,"Perez","Hector",LocalDate.of(1987, 04, 12),true);
         
-        //ad.guardarAlumno(alu);
-=======
-        Alumno alu =new Alumno(33089223,"Tor","Tor",LocalDate.of(1987, 04, 12),true);
-        
-        ad.guardarAlumno(alu);
-        //d.actualizarAlumno(alu);
->>>>>>> Stashed changes
-        
+        //ad.guardarAlumno(alu);         
         ad.obtenerAlumnos().forEach(alumno->{
         JOptionPane.showMessageDialog(null, alumno);
            //System.out.println(alumno);
         });
+          
+      JOptionPane.showMessageDialog(null, "Alumno encontrado: " +ad.obtenerAlumnoPorId(2) );
+       ad.borrarAlumno(1);
+        
+       
        
         
 //        Materia mat = new Materia("Lab 1",1,true);
