@@ -42,15 +42,20 @@ public class AlumnoData {
     }
     
     public List<Alumno> obtenerAlumnos(){
+        
         ArrayList<Alumno> listaTemp=new ArrayList();
-        String sql="SELECT * FROM alumno WHERE estado = 1";
+        
+        String sql="SELECT * FROM alumnos WHERE estado = 1";
         
         try {
             PreparedStatement ps=con.prepareStatement(sql);
+            
             ResultSet rs=ps.executeQuery();//select
+            
             while(rs.next()){
             
                 Alumno a=new Alumno();
+                a.setIdAlumno(rs.getInt("idAlumno"));
                 a.setIdAlumno(rs.getInt("idAlumno"));
                 a.setDni(rs.getInt("dni"));
                 a.setApellido(rs.getString("apellido"));
@@ -69,4 +74,9 @@ public class AlumnoData {
     return listaTemp;
     }
     
+    
 }
+    
+    
+    
+

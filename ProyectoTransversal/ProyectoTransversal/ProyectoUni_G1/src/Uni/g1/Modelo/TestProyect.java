@@ -16,11 +16,14 @@ public class TestProyect {
         
         AlumnoData ad = new AlumnoData();
             
-        Alumno alu = new Alumno(33089223,"Perez","Hector",LocalDate.of(1987, 04, 12),true);
+        Alumno alu = new Alumno(3323,"Perez","Hector",LocalDate.of(1987, 04, 12),true);
         
-        ad.guardarAlumno(alu);
-        //d.actualizarAlumno(alu);
+        //ad.guardarAlumno(alu);
         
+        ad.obtenerAlumnos().forEach(alumno->{
+        JOptionPane.showMessageDialog(null, alumno);
+           //System.out.println(alumno);
+        });
        
         
 //        Materia mat = new Materia("Lab 1",1,true);
