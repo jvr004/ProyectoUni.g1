@@ -4,7 +4,7 @@ package Uni.g1.Modelo;
 import java.time.LocalDate;
 import java.time.Month;
 import javax.swing.JOptionPane;
-
+import java.sql.Connection;
 import Uni.g1.Controladora.AlumnoData;
 
 
@@ -16,9 +16,9 @@ public class TestProyect {
         
         AlumnoData ad = new AlumnoData();
             
-        Alumno alu = new Alumno(33089223,"Tor","Tor",LocalDate.of(1987, 04, 12),true);
+        Alumno alu = new Alumno(33089223,"Perez","Hector",LocalDate.of(1987, 04, 12),true);
         
-      ad.guardarAlumno(alu);
+        ad.guardarAlumno(alu);
         //d.actualizarAlumno(alu);
         
        

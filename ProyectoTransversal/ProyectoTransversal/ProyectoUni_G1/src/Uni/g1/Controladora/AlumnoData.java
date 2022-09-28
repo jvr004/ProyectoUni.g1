@@ -18,10 +18,10 @@ public class AlumnoData {
     
     public void guardarAlumno(Alumno alumno){
         //a)	INSERT INTO `alumno` (`dni`,`apellido`,`nombre`,`fechaNacimiento`,`estado`) VALUES ('111','Muñoz','Federico','2001-05-31','1'),(
-        String sql="INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
+        String sql="INSERT INTO alumnos (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ps.setLong(1, alumno.getDni());
+            ps.setInt(1, alumno.getDni());
             ps.setString(2,alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
@@ -32,9 +32,10 @@ public class AlumnoData {
             if(rs.next()){
             
                 alumno.setIdAlumno(rs.getInt(1));
-            
-            }
-            ps.close();
+                
+                JOptionPane.showMessageDialog(null, "Alumno agregado exitosamente");           
+            }          
+            ps.close();           
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ALumnoData Sentencia SQL erronea-AgregarAlumno");
         }
