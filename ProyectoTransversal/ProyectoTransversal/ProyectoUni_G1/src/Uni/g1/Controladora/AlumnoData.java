@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import Uni.g1.Modelo.Conexion;
 import Uni.g1.Modelo.Alumno;
 
+
 public class AlumnoData {
     private Connection con;
 

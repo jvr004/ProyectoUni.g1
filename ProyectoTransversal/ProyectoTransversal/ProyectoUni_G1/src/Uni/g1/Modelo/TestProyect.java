@@ -14,11 +14,18 @@ public class TestProyect {
     public static void main(String[] args) {
         
         
-        AlumnoData ad = new AlumnoData();
+        AlumnoData ad =new AlumnoData();
             
+<<<<<<< Updated upstream
         Alumno alu = new Alumno(3323,"Perez","Hector",LocalDate.of(1987, 04, 12),true);
         
         //ad.guardarAlumno(alu);
+=======
+        Alumno alu =new Alumno(33089223,"Tor","Tor",LocalDate.of(1987, 04, 12),true);
+        
+        ad.guardarAlumno(alu);
+        //d.actualizarAlumno(alu);
+>>>>>>> Stashed changes
         
         ad.obtenerAlumnos().forEach(alumno->{
         JOptionPane.showMessageDialog(null, alumno);
